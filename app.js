@@ -3,7 +3,7 @@ const express = require('express')
 let app = require('express')()
 let http = require('http').createServer(app);
 //let io = require('socket.io')(http)
-const Bluetooth	= require('node-web-bluetooth');
+const bl	= require('node-web-bluetooth');
 
 const bodyParser = require('body-parser')
 
@@ -63,11 +63,14 @@ router.post('/student_registration', (req, res)=> {
 
   
   })
-
+  if (bl.getAvailability()){
+    console.log(2)
+  }
+  
+  
   
 })
-app.use('/', r
-  outer)
+app.use('/', router)
 http.listen(6700, ()=>{
     console.log('listening on *:6700');
 })

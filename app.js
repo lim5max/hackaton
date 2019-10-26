@@ -6,9 +6,11 @@ const session = require('express-session')
 
 
 const midllewares = [
+  
   bodyParser.urlencoded()
 ]
-
+let teacher_session;
+app.use(session({secret: 'ssshhhhh'}))
 app.use(midllewares)
 
 app.get('/dashboard', function(req, res) {
@@ -20,7 +22,9 @@ app.get('/dashboard', function(req, res) {
 app.post('/dashboard', function(req, res){
   teacher_name  =  req.body.teachername
   password      =  req.body.password
-
+  if (password == "limtee" && teacher_name == "password") {
+    
+  }
 
 })
 

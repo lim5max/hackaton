@@ -1,34 +1,53 @@
-let app = require('express')();
-let http = require('http').createServer(app);
-let io = require('socket.io')(http)
-const bodyParser = require('body-parser')
 const session = require('express-session')
+const express = require('express')
+let app = require('express')()
+let http = require('http').createServer(app);
+//let io = require('socket.io')(http)
+const bodyParser = require('body-parser')
+
+let router = express.Router();
 
 
 const midllewares = [
   
   bodyParser.urlencoded()
 ]
-let teacher_session;
-app.use(session({secret: 'ssshhhhh'}))
+app.use(express.static(__dirname + '/templates'));
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true}))
 app.use(midllewares)
 
-app.get('/dashboard', function(req, res) {
+router.get('/dashboard', function(req, res) {
     
-    res.sendFile(__dirname + '/templates/dashboard.html');
+    res.sendFile(__dirname+'/templates/dashboard.html');
 
   })
 
-app.post('/dashboard', function(req, res){
+router.post('/dashboard', function(req, res){
   teacher_name  =  req.body.teachername
   password      =  req.body.password
-  if (password == "limtee" && teacher_name == "password") {
+  console.log(password, teacher_name)
+  if (password == "password" && teacher_name == "limkee") {
+    req.session.thname = teacher_name
     
+    res.redirect('/admin_panel')
+  }else{
+    res.redirect('/dashboard')
   }
+  
+
 
 })
+router.get('/admin_panel', (req, res)=>{
+  
+  if (!req.session.thname){
+    res.redirect('/dashboard');
 
+  }else{
+    res.sendFile(__dirname+'/templates/index.html')
+  }
+})
 
+app.use('/', router)
 http.listen(6700, ()=>{
     console.log('listening on *:6700');
 })

@@ -1,0 +1,15 @@
+<button id="pair">Pair device</button>
+
+  <script>
+    window.onload = () => {
+      const button = document.getElementById('pair')
+      button.addEventListener('pointerup',async function(event) {
+     await navigator.bluetooth.requestDevice({
+    
+        acceptAllDevices: true
+    
+   
+});
+      });
+    }
+  </script>

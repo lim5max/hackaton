@@ -18,8 +18,10 @@
   "homepage": "https://github.com/lim5max/hackaton#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-layout": "^0.1.0",
+    "express-session": "^1.17.0",
     "http": "0.0.0",
     "node-bluetooth": "^1.2.6",
     "nodemon": "^1.19.4",

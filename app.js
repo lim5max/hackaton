@@ -2,6 +2,8 @@ let app = require('express')();
 let http = require('http').createServer(app);
 let io = require('socket.io')(http)
 
+app.use(express.session());
+
 
 app.get('/', function(req, res) {
     
@@ -13,11 +15,13 @@ app.get('/login', function(req, res) {
   res.sendFile(__dirname + '/templates/login.html');
 
 })
+
 app.get('/classes', function(req, res) {
     
   res.sendFile(__dirname + '/templates/classes.html');
 
 })
+
 app.get('/tech_classes', function(req, res) {
     
   res.sendFile(__dirname + '/templates/index.html');

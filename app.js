@@ -3,11 +3,15 @@ const express = require('express')
 let app = require('express')()
 let http = require('http').createServer(app);
 //let io = require('socket.io')(http)
+const Bluetooth	= require('node-web-bluetooth');
+
 const bodyParser = require('body-parser')
 
 let router = express.Router();
 
-
+let students = [
+  
+]
 const midllewares = [
   
   bodyParser.urlencoded()
@@ -46,8 +50,24 @@ router.get('/admin_panel', (req, res)=>{
     res.sendFile(__dirname+'/templates/index.html')
   }
 })
+router.get('/student_registration', (req, res)=>{
+  res.sendFile(__dirname + '/templates/user_reg.html')
 
-app.use('/', router)
+
+})
+router.post('/student_registration', (req, res)=> {
+  students.append({
+    username : req.body.username,
+    surname :  req.body.surname,
+    bl_name :  req.body.bl_name,
+
+  
+  })
+
+  
+})
+app.use('/', r
+  outer)
 http.listen(6700, ()=>{
     console.log('listening on *:6700');
 })

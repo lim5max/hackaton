@@ -24,6 +24,7 @@
     "express-session": "^1.17.0",
     "http": "0.0.0",
     "node-bluetooth": "^1.2.6",
+    "node-web-bluetooth": "^1.1.0",
     "nodemon": "^1.19.4",
     "path": "^0.12.7",
     "socket.io": "^2.3.0",

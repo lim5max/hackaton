@@ -5,32 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+            body{
+                margin: 0
+            }
+            .cl{
+                max-width: 400px;
+                height: 400px;
+                background-color: darkslategray;
+                position: relative;
+            }
+            .cl > p {
+                height: 80px;
+                width: 100%;
+                background-color: floralwhite;
+                position: absolute;
+                bottom: 0;
+                margin: 0;
+                cursor: pointer;
+            }
+            
+            
+            </style>
 </head>
+
 <body>
-    <div onclick="connect()">
     
-    </div>
+    <center>
+        <div class="cl" onclick="connect()">
+    `       <h3>First lecture</h3>
+            <p>Click here</p>
+        </div>
+</center>
 <script>
     
     
     
-function connect(){
+ function connect(){
+
     navigator.bluetooth.requestDevice({
         filters: [{
-            name: "FirstTearch"
-        }],
-        acceptAllDevices: true})
+            name: "opopo"
+        }]
+        })
         .then(device => {
-    console.log('Connecting to GATT Server...');
-    return device.gatt.connect();
-  })
-  .then(server => {
-    // Note that we could also get all services that match a specific UUID by
-    // passing it to getPrimaryServices().
-    log('Getting Services...');
-    return server.getPrimaryServices();
-  })
+        console.log('Connecting to GATT Server...');
+        return device.gatt.connect();
+        })
+        .then(server => {
+        // Note that we could also get all services that match a specific UUID by
+        // passing it to getPrimaryServices().
+        log('Getting Services...');
+        return server.getPrimaryServices();
+    })
     }
+    
     
     </script>
 </body>

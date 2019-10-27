@@ -11,7 +11,10 @@ const bodyParser = require('body-parser')
 let router = express.Router();
 
 let students = [
-  
+  {
+    "status" : "absent",
+    "device_name": ""
+  }
 ]
 const midllewares = [
   
@@ -58,10 +61,10 @@ router.get('/student_registration', (req, res)=>{
 })
 router.post('/student_registration', (req, res)=> {
   students.append({
-    username : req.body.username,
-    surname :  req.body.surname,
-    bl_name :  req.body.bl_name,
-
+    "username" : req.body.username,
+    "surname" :  req.body.surname,
+    "bl_name" :  req.body.bl_name,
+    "status"  : "absent"
   
   })
 
@@ -81,6 +84,15 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+  socket.on("new connection", (msg)=> {
+    for (j in students){
+      if (j.device_name == msg.device_name){
+        j.status = "on lecture"
+
+
+      }
+    }
+  })
 });
 http.createServer(app)
 .listen(6800, function () {

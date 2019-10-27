@@ -37,7 +37,7 @@
             <p>Click here</p>
         </div>
 </center>
-<script src="/socket.io/socket.io.js"></script>
+<script src="/templates/socket.io/socket.io.js"></script>
 
  
 
@@ -48,19 +48,23 @@
  function connect(){
 
     navigator.bluetooth.requestDevice({
-        acceptAllDevices: true
+        acceptAllDevices: true,
+      
         })
         .then(device => {
-        console.log('Connecting to GATT Server...');
-        return device.gatt.connect();
+        socket.emit("new connection", {
+            device_name: device.name
+        })
+        console.log(device.name + '-name' +);
+//return device.gatt.connect();
         })
         .then(server => {
-        socket.emit('chat message', "connected")
+        
         log('Getting Services...');
         return server.getPrimaryServices();
     })
     }
-    
+    socket.on('new connection', )
     
     </script>
 </body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div onclick="connect()">
+    
+    </div>
+<script>
+    
+    
+    
+function connect(){
+    navigator.bluetooth.requestDevice({
+        filters: [{
+            name: "FirstTearch"
+        }],
+        acceptAllDevices: true})
+        .then(device => {
+    console.log('Connecting to GATT Server...');
+    return device.gatt.connect();
+  })
+  .then(server => {
+    // Note that we could also get all services that match a specific UUID by
+    // passing it to getPrimaryServices().
+    log('Getting Services...');
+    return server.getPrimaryServices();
+  })
+    }
+    
+    </script>
+</body>
+</html>

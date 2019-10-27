@@ -37,24 +37,25 @@
             <p>Click here</p>
         </div>
 </center>
+<script src="/socket.io/socket.io.js"></script>
+
+ 
+
 <script>
     
-    
+    var socket = io();
     
  function connect(){
 
     navigator.bluetooth.requestDevice({
-        filters: [{
-            name: "opopo"
-        }]
+        acceptAllDevices: true
         })
         .then(device => {
         console.log('Connecting to GATT Server...');
         return device.gatt.connect();
         })
         .then(server => {
-        // Note that we could also get all services that match a specific UUID by
-        // passing it to getPrimaryServices().
+        socket.emit('chat message', "connected")
         log('Getting Services...');
         return server.getPrimaryServices();
     })

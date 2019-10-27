@@ -1,8 +1,9 @@
 const session = require('express-session')
 const express = require('express')
 let app = require('express')()
-let http = require('http').createServer(app);
-//let io = require('socket.io')(http)
+const http = require('http')
+let io = require('socket.io')(http)
+var fs = require('fs')
 
 
 const bodyParser = require('body-parser')
@@ -75,6 +76,13 @@ router.get('/classes', (req, res)=>{
 
 })
 app.use('/', router)
-http.listen(6700, ()=>{
-    console.log('listening on *:6700');
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+http.createServer(app)
+.listen(6800, function () {
+  console.log('Example app listening on port 6800! Go to https://localhost:6800/')
 })

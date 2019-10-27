@@ -3,7 +3,7 @@ const express = require('express')
 let app = require('express')()
 let http = require('http').createServer(app);
 //let io = require('socket.io')(http)
-const bl	= require('node-web-bluetooth');
+
 
 const bodyParser = require('body-parser')
 
@@ -63,12 +63,16 @@ router.post('/student_registration', (req, res)=> {
 
   
   })
-  if (bl.getAvailability()){
-    console.log(2)
-  }
+
+  res.redirect('/student_login')
   
   
   
+})
+router.get('/classes', (req, res)=>{
+  res.sendFile(__dirname+'/templates/classes.html')
+
+
 })
 app.use('/', router)
 http.listen(6700, ()=>{

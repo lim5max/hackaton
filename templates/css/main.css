@@ -1,0 +1,67 @@
+* {
+    font-family: Roboto;
+}
+.header {
+    display: block;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 13px;
+    background: #01A293;
+    height: 180px;
+    box-shadow: 0px 13px 7px rgba(0,0,0,0.25);
+}
+.logo-h2  {
+    position: relative;
+    font-size: 56px;
+    left: 13px;
+    top: 13px;
+    color: #DFFFF4;
+    font-family: Roboto;
+    margin-right: 30%;
+    border-bottom: rgb(1, 109, 98);
+}
+.regist-h3 {
+    position: relative;
+    text-align: center;
+    color: #DFFFF4;
+    font-family: Roboto;
+    font-size: 40px;
+}
+.regist-div {
+    position: relative;
+    width: 70%;
+    text-align: center;
+}
+.form-header {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin-left: 5%;
+}
+.btn {
+    position: relative;
+    padding: 13px 32px 13px 32px;
+    top: 13px;
+    font-size: 24px;
+    border-radius: 13px;
+    background: #009688;
+    color: #D9FBF5;
+    border: none;
+    box-shadow: 6px 8px 4px rgba(0,0,0,0.25);
+}
+.form-field {
+    width: 20%;
+}
+label {
+    margin-right: 100px;
+    position: relative;
+    width: 300px;
+}
+#password {
+    position: relative;
+    margin-right: 0px;
+    padding: 7px;
+    background: #E8F7F5;
+    border: solid 1px #009688;
+    border-radius: 7px;
+}

@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+    <header class="header">
+        <h2 class="logo-h2">OCA</h2>    
+    </header>
+
+    <div class="form-header">
     <form method="POST" action="/student_registration">
-    
-    <input name="username">
-    <input name="surname">
-    <input name="bl_name">
-    
-    
-    
+    <div class="form-field">Username
+        <label for="password"></label>
+        <input type="text" class="input" id="password" placeholder=". . ." name="username" value="" autofocus>
+    </div>
+    <div class="form-field">Surname
+        <label for="password"></label>
+        <input type="text" class="input" id="password" placeholder=". . ." name="surname" value="" autofocus>
+    </div>
+    <div class="form-field">Bluetooth name
+        <label for="password"></label>
+        <input type="text" class="input" id="password" placeholder=". . ." name="surname" value="" autofocus>
+    </div>
+    <div class="form-action">
+        <button class="btn" type="submit">Send</button>
+    </div>
     </form>
+    </div>
 </body>
 </html>
